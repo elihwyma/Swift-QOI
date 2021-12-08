@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QoiDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SWi-SY-bD5">
+                                <rect key="frame" x="67.5" y="49" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="n5S-TR-cr5"/>
+                                    <constraint firstAttribute="height" constant="128" id="xG0-Et-WgX"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UvA-My-88S">
+                                <rect key="frame" x="67.5" y="421" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="2KI-nm-7c3"/>
+                                    <constraint firstAttribute="width" constant="240" id="5M7-tV-7O6"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-77-zOI">
+                                <rect key="frame" x="67.5" y="220" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="gPc-4v-vyi"/>
+                                    <constraint firstAttribute="width" constant="240" id="i3s-e2-WEn"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1cR-77-zOI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DPV-Xk-t8C"/>
+                            <constraint firstItem="SWi-SY-bD5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kmd-ob-Cvd"/>
+                            <constraint firstItem="UvA-My-88S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XUg-Vr-rbQ"/>
+                            <constraint firstItem="UvA-My-88S" firstAttribute="top" secondItem="1cR-77-zOI" secondAttribute="bottom" constant="73" id="awH-Up-l7z"/>
+                            <constraint firstItem="1cR-77-zOI" firstAttribute="top" secondItem="SWi-SY-bD5" secondAttribute="bottom" constant="43" id="tEZ-3S-dzl"/>
+                            <constraint firstItem="SWi-SY-bD5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="49" id="vKw-W1-vZx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageViewOne" destination="SWi-SY-bD5" id="rnB-Gt-HwF"/>
+                        <outlet property="imageViewThree" destination="UvA-My-88S" id="3p4-15-BeY"/>
+                        <outlet property="imageViewTwo" destination="1cR-77-zOI" id="KBR-kR-wim"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="114" y="54"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

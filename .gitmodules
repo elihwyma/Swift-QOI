@@ -1,0 +1,6 @@
+[submodule "Sources/Include"]
+	path = Sources/Include
+	url = https://github.com/phoboslab/qoi
+[submodule "Sources/QOI"]
+	path = Sources/QOI
+	url = https://github.com/phoboslab/qoi

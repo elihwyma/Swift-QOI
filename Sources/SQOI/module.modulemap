@@ -1,0 +1,4 @@
+module SQOI [system] {
+    header "SQOI.h"
+    export *
+}
