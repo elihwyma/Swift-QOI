@@ -24,7 +24,10 @@ final public class QOICoder {
     
     // 4 Channels is for a standard RGBA image, good enough 99% of the time
     public class func decode(from data: Data, channels: UInt8 = 4, format: CIFormat = .RGBA8) -> CIImage? {
-        guard let (qoiData, height, width) = _decode(from: data, channels: channels, format: format) else { return nil }
+        guard let qoiData = _decode(from: data, channels: channels, format: format),
+              qoiData.count >= 11 else { return nil }
+        let width = Int(data.subdata(in: 4...7).bytes)
+        let height = Int(data.subdata(in: 8...11).bytes)
         let bytesPerRow = width * 4
         let size = CGSize(width: width, height: height)
         let image = CIImage(bitmapData: qoiData,
@@ -35,7 +38,7 @@ final public class QOICoder {
         return image
     }
     
-    public class func _decode(from data: Data, channels: UInt8 = 4, format: CIFormat = .RGBA8) -> (Data, Int, Int)? {
+    public class func _decode(from data: Data, channels: UInt8 = 4, format: CIFormat = .RGBA8) -> Data? {
         var desc = qoi_desc(width: 0, height: 0, channels: channels, colorspace: 0)
         
         guard let bytes = data.withUnsafeBytes({ $0.baseAddress }),
@@ -51,7 +54,7 @@ final public class QOICoder {
         let dataCount = pixelCount * (Int(channels) + 1) + Int(SQOI.QOI_PADDING) + Int(SQOI.QOI_HEADER_SIZE)
 
         let qoiData = Data(bytes: pixelData, count: dataCount)
-        return (qoiData, height, width)
+        return qoiData
     }
     
     private class func convertCIImageToCGImage(inputImage: CIImage) -> CGImage? {
@@ -110,5 +113,35 @@ private extension CGImage {
         }
 
         return (pixelValues, width, height)
+    }
+}
+
+private extension FixedWidthInteger {
+    
+    init(_ bytes: [UInt8]) {
+        precondition(bytes.count <= MemoryLayout<Self>.size)
+
+        var value: UInt64 = 0
+
+        for byte in bytes {
+            value <<= 8
+            value |= UInt64(byte)
+        }
+
+        self.init(value)
+    }
+    
+    func byteArray() -> [UInt8] {
+        withUnsafeBytes(of: bigEndian, Array.init)
+    }
+}
+
+private extension Data {
+    func subdata(in range: ClosedRange<Index>) -> Data {
+        return subdata(in: range.lowerBound ..< range.upperBound + 1)
+    }
+    
+    var bytes: [UInt8] {
+        [UInt8](self)
     }
 }
