@@ -49,9 +49,9 @@ final public class QOICoder {
 
         let height = Int(desc.height)
         let width = Int(desc.width)
-        
+
         let pixelCount = height * width
-        let dataCount = pixelCount * (Int(channels) + 1) + Int(SQOI.QOI_PADDING) + Int(SQOI.QOI_HEADER_SIZE)
+        let dataCount = pixelCount * (Int(channels) + 1) + Mirror(reflecting: SQOI.qoi_padding).children.count + Int(SQOI.QOI_HEADER_SIZE)
 
         let qoiData = Data(bytes: pixelData, count: dataCount)
         return qoiData
