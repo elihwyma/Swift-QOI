@@ -20,17 +20,17 @@ private extension NSImage {
 
 public extension QOICoder {
     
-    class func convert(from png: NSImage) -> Data? {
+    static func convert(from png: NSImage) -> Data? {
         guard let cgImage = png.cgImage(forProposedRect: nil, context: nil, hints: nil) else { return nil }
         return convert(from: cgImage)
     }
     
-    class func nsImage(from url: URL, channels: UInt8 = 4, format: CIFormat = .RGBA8) throws -> NSImage? {
+    static func nsImage(from url: URL, channels: UInt8 = 4, format: CIFormat = .RGBA8) throws -> NSImage? {
         guard let ciImage = try? decode(from: url, channels: channels, format: format) else { return nil }
         return NSImage(ciImage: ciImage)
     }
     
-    class func nsImage(from data: Data, channels: UInt8 = 4, format: CIFormat = .RGBA8) -> NSImage? {
+    static func nsImage(from data: Data, channels: UInt8 = 4, format: CIFormat = .RGBA8) -> NSImage? {
         guard let ciImage = decode(from: data, channels: channels, format: format) else { return nil }
         return NSImage(ciImage: ciImage)
     }
